@@ -7,7 +7,6 @@ import Header from './components/Header';
 function App() {
   return (
     <div>
-      {console.log('toto')}
       <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
