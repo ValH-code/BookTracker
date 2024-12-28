@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import BookList from "../components/BookList";
-import AddBookForm from "../components/AddBookForm";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -83,7 +82,6 @@ const Books = () => {
 
   return (
     <div>
-      <AddBookForm onAddBook={handleAddBook} />
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           {/* Filtre */}
