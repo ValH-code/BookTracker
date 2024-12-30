@@ -1,15 +1,19 @@
-
+import { motion, AnimatePresence } from "framer-motion";
 
 function BookList({ books, onDeleteBook, onUpdateStatus }) {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Ma Liste de Livres</h2>
       {books && books.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <AnimatePresence>
           {books.map((book) => (
-            <div
-              key={book.id}
-              className="bg-white shadow-md rounded-md p-4 flex flex-col items-center"
+            <motion.div
+            key={book.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white shadow-md rounded-md p-4 flex flex-col items-center mb-4"
             >
               <img
                 src={book.cover}
@@ -33,9 +37,9 @@ function BookList({ books, onDeleteBook, onUpdateStatus }) {
                   Supprimer
                 </button>
               </div>
-            </div>
+              </motion.div>
           ))}
-        </div>
+        </AnimatePresence>
       ) : (
         <p className="text-gray-500">Aucun livre trouvé.</p>
       )}

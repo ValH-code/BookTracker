@@ -83,7 +83,7 @@ const Books = () => {
   return (
     <div>
       <div className="p-4">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-4 dark:text-black">
           {/* Filtre */}
           <select
             value={filterStatus}
