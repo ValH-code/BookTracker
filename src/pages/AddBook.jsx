@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion"; // Import Framer Motion
+import { auth, db } from "../firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
 
 const AddBook = ({ onAddBook }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -74,10 +76,22 @@ const AddBook = ({ onAddBook }) => {
     setTimeout(() => setSuccessMessage(""), 3000);
   };
 
+  const storageAddBook = async (newBook) => {
+    const user = auth.currentUser;
+    if (user) {
+      const bookRef = doc(db, "books", `${user.uid}_${newBook.id}`);
+      await setDoc(bookRef, {
+        ...newBook,
+        userId: user.uid,
+      });
+      setSuccessMessage(`Le livre "${newBook.title}" a été ajouté.`);
+    }
+  };
+  
 
 
   return (
-    <div className="p-4 bg-white dark:bg-gray-700 dark:text-gray-200 rounded shadow-md">
+    <div className="p-4 mt-8 bg-white dark:bg-gray-700 dark:text-gray-200 rounded shadow-md">
       <h2 className="text-2xl font-bold mb-4">Ajouter un Livre</h2>
       {/* Recherche de livres */}
       <div className="mb-4">
@@ -87,7 +101,7 @@ const AddBook = ({ onAddBook }) => {
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Rechercher un livre"
-          className="border border-gray-300 rounded p-2 w-full"
+          className="border border-gray-300 rounded p-2 w-full text-black"
         />
         <button
           onClick={handleSearch}
@@ -128,7 +142,7 @@ const AddBook = ({ onAddBook }) => {
               alt={book.volumeInfo.title}
               className="w-32 h-48 object-cover mb-4"
             />
-            <h3 className="text-lg font-semibold">{book.volumeInfo.title}</h3>
+            <h3 className="text-lg font-semibold text-black">{book.volumeInfo.title}</h3>
             <p className="text-gray-500">
               Auteur : {book.volumeInfo.authors?.join(", ") || "Auteur inconnu"}
             </p>
@@ -150,28 +164,28 @@ const AddBook = ({ onAddBook }) => {
             placeholder="Titre"
             value={manualBook.title}
             onChange={(e) => setManualBook({ ...manualBook, title: e.target.value })}
-            className="border border-gray-300 rounded p-2 w-full"
+            className="border border-gray-300 rounded p-2 w-full dark:text-black"
           />
           <input
             type="text"
             placeholder="Auteur"
             value={manualBook.author}
             onChange={(e) => setManualBook({ ...manualBook, author: e.target.value })}
-            className="border border-gray-300 rounded p-2 w-full"
+            className="border border-gray-300 rounded p-2 w-full dark:text-black"
           />
           <input
             type="text"
             placeholder="Genre"
             value={manualBook.genre}
             onChange={(e) => setManualBook({ ...manualBook, genre: e.target.value })}
-            className="border border-gray-300 rounded p-2 w-full"
+            className="border border-gray-300 rounded p-2 w-full dark:text-black"
           />
           <input
             type="text"
             placeholder="URL de la couverture (facultatif)"
             value={manualBook.cover}
             onChange={(e) => setManualBook({ ...manualBook, cover: e.target.value })}
-            className="border border-gray-300 rounded p-2 w-full"
+            className="border border-gray-300 rounded p-2 w-full dark:text-black"
           />
           <button
             type="submit"

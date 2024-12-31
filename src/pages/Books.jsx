@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import BookList from "../components/BookList";
+import { auth, db } from "../firebaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+
+
+
 
 const Books = () => {
   const [books, setBooks] = useState([]);
   const [filterStatus, setFilterStatus] = useState("Tous");
   const [sortOption, setSortOption] = useState("titre");
+
 
   // Charger les livres depuis localStorage au démarrage
   useEffect(() => {
