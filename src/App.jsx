@@ -4,7 +4,11 @@ import Home from './pages/Home';
 import Books from './pages/Books';
 import AddBook from './pages/AddBook';
 import Header from './components/Header';
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
 import { AnimatePresence, motion } from "framer-motion";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -67,22 +71,51 @@ const App = () => {
                 <Home books={books} />
               </PageTransition>
             }
+            
+          />
+          <Route path="/sign-up" 
+            element={
+              <PageTransition>
+              <SignUp />
+              </PageTransition>
+            } 
+          />
+          <Route path="/Login"
+          element={
+              <PageTransition>
+              <Login />
+              </PageTransition>
+            }
           />
           <Route
             path="/books"
             element={
+              <PrivateRoute>
               <PageTransition>
                 <Books books={books} />
               </PageTransition>
+              </PrivateRoute>
             }
           />
           <Route
             path="/add-book"
             element={
+              <PrivateRoute>
               <PageTransition>
                 <AddBook onAddBook={handleAddBook} />
               </PageTransition>
+              </PrivateRoute>
             }
+          />
+            <Route
+              path="/profile"
+              element={
+              <PrivateRoute>
+              <PageTransition>
+                <Profile />
+              </PageTransition>
+              </PrivateRoute>
+              }
           />
         </Routes>
       </AnimatePresence>

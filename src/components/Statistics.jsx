@@ -19,7 +19,8 @@ function Statistics({ books }) {
 
   return (
     <div className="p-4 bg-gray-100 rounded-md shadow-md dark:bg-gray-900">
-      <h2 className="text-2xl font-bold mb-4">Statistiques</h2>
+      <h2 className="text-2xl font-bold mb-4 dark:text-white">Statistiques</h2>
+      <div className="flex justify-center">
       <PieChart width={400} height={300}>
         <Pie
           data={data}
@@ -38,7 +39,8 @@ function Statistics({ books }) {
         <Tooltip />
         <Legend />
       </PieChart>
-      <div className="mt-4">
+      </div>
+      <div className="mt-4 dark:text-white">
         <p><strong>Total :</strong> {books.length} livres</p>
         {data.map((item) => (
           <p key={item.name}>
