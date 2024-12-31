@@ -103,7 +103,7 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 ## Aperçu 🎥
 
 ### Page d'accueil
-![Home Page Screenshot]()
+![Home Page Screenshot](![BookTracker-12-31-2024_03_23_AM](https://github.com/user-attachments/assets/598005de-d923-491c-98db-a4bec298bb26))
 
 ### Page de gestion des livres
 ![Books Page Screenshot]()
