@@ -108,7 +108,7 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 ### Page de gestion des livres
 ![BookTracker-12-31-2024_03_22_AM (1)](https://github.com/user-attachments/assets/cc304529-4033-4cf6-90d5-c2a0d6a09a71)
 
-### Profil utilisateur
+### Page d'ajout de livre
 ![BookTracker-12-31-2024_03_23_AM](https://github.com/user-attachments/assets/598005de-d923-491c-98db-a4bec298bb26))
 
 ---
