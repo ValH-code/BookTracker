@@ -12,7 +12,7 @@ const Books = () => {
   const [filterStatus, setFilterStatus] = useState("Tous");
   const [sortOption, setSortOption] = useState("titre");
 
-
+  // changer pour que ce soit avec firebase
   // Charger les livres depuis localStorage au démarrage
   useEffect(() => {
     try {
