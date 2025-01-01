@@ -89,4 +89,6 @@ const Profile = () => {
   );
 };
 
+
+// fix pour que ca marche avec firebase
 export default Profile;
